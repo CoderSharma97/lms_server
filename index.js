@@ -1,7 +1,8 @@
-import express from "express";
 import dotenv from "dotenv";
+import express from "express";
 import { connectDb } from "./database/db.js";
 import cors from "cors";
+import aiRoutes from "./routes/ai.routes.js";
 // import Razoray from "razorpay";
 dotenv.config();
 
@@ -36,6 +37,7 @@ import adminRoutes from './routes/admin.js';
 app.use("/api",userRoutes);
 app.use("/api",courseRoutes);
 app.use("/api",adminRoutes);
+app.use("/ai", aiRoutes);
 app.listen(port, () => {
   console.log(`server is running ${port}`);
   connectDb();
